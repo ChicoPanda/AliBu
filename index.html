@@ -11,16 +11,21 @@
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
 
     <script src="assets/js/custom/twitterLogin.js"></script>
+    <script src="assets/js/custom/FacebookLogin.js"></script>
     <title>Document</title>
 </head>
 
 <body>
-   <h1>PRUEBITA</h1>
-   <h2>PRUEBA2</h2>
-   
-   <button id="logIn">Twitter Login</button>
-   <button id="logOut">Twitter Logout</button>
-   
+    <h1>PRUEBITA</h1>
+    <h2>PRUEBA2</h2>
+
+    <button id="logIn">Twitter Login</button>
+    <button id="logOut">Twitter Logout</button>
+    <div id="status"></div>
+    <button onclick="getInfo()">Get Info</button>
+    <button onclick="login()" id="login">Login</button>
+
 </body>
-    <script src="assets/js/lib/firebase-init.js"></script>
+<script src="assets/js/lib/firebase-init.js"></script>
+
 </html>
