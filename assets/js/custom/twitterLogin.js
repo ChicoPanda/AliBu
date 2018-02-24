@@ -1,15 +1,19 @@
-var backFromLogin = false;
 $(document).ready(function(){
+    afterTwitterLogin();
     $('#logIn').on('click', function(){
+        $('#logIn').hide();
         twitterLogin();
     });
+    $('#logOut').hide();
+    if($('#logIn').is(':hidden')){
+        $('#logOut').show();
+    }
 
     $('#logOut').on('click', function() {
         twitterLogout();
     });
-    alert("Documento Cargado");
     
-    afterTwitterLogin();
+    
 });
 
 /*
@@ -21,7 +25,6 @@ $(document).ready(function(){
     que es 127.0.0.1.
 */
 function twitterLogin(){
-    backFromLogin = true;
     var provider = new firebase.auth.TwitterAuthProvider();
     firebase.auth().signInWithRedirect(provider);
 }
@@ -29,6 +32,8 @@ function twitterLogin(){
 function afterTwitterLogin(){
     firebase.auth().getRedirectResult().then(function(result) {
         if (result.credential) {
+            $('#logIn').hide();
+            $('#logOut').show();
             // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
             // You can use these server side with your app's credentials to access the Twitter API.
             
@@ -37,19 +42,23 @@ function afterTwitterLogin(){
             var token = result.credential.accessToken;
             var secret = result.credential.secret;
             // ...
-            alert("Login Correcto con redirect");
+            //alert("Login Correcto con redirect");
             // The signed-in user info.
+            //Datos del usuario
             var user = result.user;
             var userName = user.displayName;
             var avatar = user.photoURL;
-            alert(user.displayName + " | " +user.photoURL);
+            //alert(user.displayName + " | " +user.photoURL);
+            //document.getElementById('status').innerHTML = 'Estas conectado con Twitter como '+ userName;
+            $('#status').text('Estas conectado con Twitter como '+ userName);
+            
             //A partir de aquí habría que hacer consistente el logging...probablemente guardar el nombre
             //de usuario y su imagen en el localStorage porque hasta este punto si se recargfa la página
             //es como si no estuviese logueado
         }else{
             /*Este alert solo es de prueba para comprobar que al entrar en la página
             sin haberse logueado el flujo del programa va por aquí. El Else sobra y se puede quitar*/
-            alert("El usuario no ha hecho click en el botón de loggin");
+            //alert("El usuario no ha hecho click en el botón de loggin");
         }
         
     }).catch(function(error) {
@@ -69,6 +78,9 @@ function twitterLogout(){
     firebase.auth().signOut().then(function() {
         // Sign-out successful.
         alert("Te has deslogueado con éxito");
+        $('#status').text('');
+        $('#logIn').show();
+        $('#logOut').hide();
         //Aquí habría que borrar la variable del usuario en el localStorage
       }).catch(function(error) {
         // An error happened.
