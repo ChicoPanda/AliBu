@@ -4,15 +4,15 @@ $(document).ready(function() {
     $('#user-logout').hide();
 
     $('#logInGmail').on('click', function() {
-        login();
+        loginGmail();
     });
 
     $('#user-logout').on('click', function() {
-        logout();
+        logoutGmail();
     });
 });
 
-function login() {
+function loginGmail() {
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithRedirect(provider);
     // firebase.auth().useDeviceLanguage();
@@ -47,7 +47,7 @@ function afterLogin() {
     });
 }
 
-function logout() {
+function logoutGmail() {
     firebase.auth().signOut().then(function() {
         alert("Has cerrado la sesión con éxito.");
         $('#status').text('');
