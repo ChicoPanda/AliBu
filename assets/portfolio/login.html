@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Código de JQUERY -->
-    <script src="assets/js/lib/jquery-3.3.1.min.js"></script>
+    <script src="../js/lib/jquery-3.3.1.min.js"></script>
 
     <!-- Código de JQUERY UI -->
     <!-- <script src="assets/js/lib/jquery-ui.min.js"></script> -->
@@ -24,19 +24,19 @@
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
 
     <!-- Código de javascript propio -->
-    <script src="assets/js/custom/main.js"></script>
-    <script src="assets/js/custom/twitterLogin.js"></script>
-    <script src="assets/js/custom/FacebookLogin.js"></script>
-    <script src="assets/js/custom/GmailLogin.js"></script>
+    <script src="../js/custom/main.js"></script>
+    <script src="../js/custom/twitterLogin.js"></script>
+    <script src="../js/custom/FacebookLogin.js"></script>
+    <script src="../js/custom/loginGmail.js"></script>
 
     <!-- Estilos de css propios -->
-    <link rel="stylesheet" href="assets/css/custom/main.css">
-    <link rel="stylesheet" href="assets/css/custom/header.css">
-    <link rel="stylesheet" href="assets/css/custom/content.css">
-    <link rel="stylesheet" href="assets/css/custom/footer.css">
+    <link rel="stylesheet" href="../css/custom/main.css">
+    <link rel="stylesheet" href="../css/custom/header.css">
+    <link rel="stylesheet" href="../css/custom/login.css">
+    <link rel="stylesheet" href="../css/custom/footer.css">
 
     <!-- <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"> -->
-    <title>AliBu | Inicio</title>
+    <title>AliBu | Login</title>
 </head>
 
 <body>
@@ -44,7 +44,7 @@
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="logo">
                 <h1 class="logo-title">AliBu</h1>
-                <img class="logo-img" src="./assets/img/logo.svg" alt="" class="logo" width="5%">
+                <img class="logo-img" src="../img/logo.svg" alt="" class="logo" width="5%">
             </div>
             <div class="container-fluid header">
                 <!-- En la versión móvil se mostrará el nombre/icono del sitio y el botón de menú -->
@@ -54,7 +54,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                    <a class="navbar-brand" href="index.html" title="Inicio">
+                    <a class="navbar-brand" href="../../index.html" title="Inicio">
                         <span class="text-title">AliBu</span>
                         <span class="glyphicon glyphicon-home"></span>
                     </a>
@@ -62,14 +62,21 @@
                 <!-- Este es el contenido del menú que se despliega con el botón de menú-->
                 <div id="menu-desplegable" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="assets/portfolio/login.html" title="Iniciar sesión">
-                                <span class="glyphicon glyphicon-log-in"></span>
-                                <span class="text-menu">&nbsp;Iniciar sesión</span>
+                        <li id="user-info">
+                            <a href="#" title="Perfil de usuario">
+                                <span class="glyphicon glyphicon-user"></span>
+                                <span class="text-menu">&nbsp;Usuario</span>
+                                <span title="Imagen de perfil" class="user-avatar">&nbsp;</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="assets/portfolio/register.html" title="Registrarse">
+                        <li id="user-logout">
+                            <a href="#" title="Cerrar sesión">
+                                <span class="glyphicon glyphicon-log-out"></span>
+                                <span class="text-menu">&nbsp;Cerrar sesión</span>
+                            </a>
+                        </li>
+                        <li id="user-register" i>
+                            <a href="../portfolio/register.html" title="Registrarse">
                                 <span class="glyphicon glyphicon-plus"></span>
                                 <span class="text-menu">&nbsp;Registrarse</span>
                             </a>
@@ -80,34 +87,36 @@
         </nav>
     </header>
     <main>
-        <aside class="left">
-            <div class="category">
-                <h2>CATEGORÍAS</h2>
+        <div class="login">
+            <h1 class="title">Iniciar sesión</h1>
+            <form>
+                <label for="username">
+                    <span class="texto-formulario">Correo electrónico: </span>
+                    <input type="text" id="username" />
+                </label>
+                <label for="password">
+                    <span class="texto-formulario">Contraseña: </span>
+                    <input type="password" id="password" />
+                </label>
+                <span id="errores"></span>
+                <input type="button" value="Iniciar sesión" id="b_submit" class="boton efecto" />
+                <input type="button" value="Entrar como invitado" id="b_invited" class="boton efecto" />
+            </form>
+            <hr/>
+            <div class="rrss">
+                <span>Iniciar sesión con:</span>
+                <button class="icons twitter"></button>
+                <button class="icons facebook"></button>
+                <button id="logInGmail" class="icons gmail"></button>
+                <button class="icons github"></button>
             </div>
-            <div class="filter">
-                <h2>FILTROS</h2>
+            <div>
+                <div id="twitterLogin"></div>
+                <div id="status"></div>
+                <button onclick="getInfo()">Get Info</button>
+                <button onclick="login()" id="login">Login</button>
             </div>
-        </aside>
-        <aside class="right">
-            <div class="tools">
-                <h2>HERRAMIENTAS</h2>
-            </div>
-            <div class="products">
-                <h2>PRODUCTOS</h2>
-            </div>
-        </aside>
-        <!-- 
-        <button id="logIn">Twitter Login</button>
-        <button id="logOut">Twitter Logout</button>
-        <br/>
-        <br/>
-        <div id="status"></div>
-        <button onclick="getInfo()">Get Info</button>
-        <button onclick="login()" id="login">Login</button>
-        <br/>
-        <br/>
-        <button id="GmailIn">Gmail Login</button>
-        <button id="GmailOut">Gmail Logout</button> -->
+        </div>
     </main>
     <footer>
         <div class="container-fluid footer">
@@ -138,6 +147,6 @@
         </div>
     </footer>
 </body>
-<script src="assets/js/lib/firebase-init.js"></script>
+<script src="../js/lib/firebase-init.js"></script>
 
 </html>
