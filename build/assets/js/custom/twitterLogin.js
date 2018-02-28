@@ -1,5 +1,7 @@
+'use strict';
+
 var isLogged = false;
-$(document).ready(function() {
+$(document).ready(function () {
     afterTwitterLogin();
     //Usar localStorage para guardar isLogged y extraerla aquí para que tras la redirección
     //se sepa si era true o no
@@ -19,11 +21,9 @@ $(document).ready(function() {
         $('#logOut').show();
     }*/
 
-    $('#logOut').on('click', function() {
+    $('#logOut').on('click', function () {
         twitterLogout();
     });
-
-
 });
 
 /*
@@ -40,8 +40,8 @@ function twitterLogin() {
 }
 
 function afterTwitterLogin() {
-    $('<img class="spinner" src="./../img/spinner.gif">').appendTo('#twitterLogin');
-    firebase.auth().getRedirectResult().then(function(result) {
+    $('<img class="spinner" src="/build/assets/img/spinner.gif">').appendTo('#twitterLogin');
+    firebase.auth().getRedirectResult().then(function (result) {
         if (result.credential) {
             //Datos del usuario
             var user = result.user;
@@ -72,15 +72,14 @@ function afterTwitterLogin() {
             //es como si no estuviese logueado
         } else {
             /*Este alert solo es de prueba para comprobar que al entrar en la página
-            sin haberse logueado el flujo del programa va por aquí. El Else sobra y se puede quitar*/
+            sin haberse logueado el flujo del programa va por aquí.*/
             //alert("El usuario no ha hecho click en el botón de loggin");
             $('.spinner').remove();
             $('#logOut').remove();
             $('<button id="logIn">Twitter Log In</button>').appendTo('#twitterLogin');
             twitterLoginClickEventHandler();
         }
-
-    }).catch(function(error) {
+    }).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -94,8 +93,7 @@ function afterTwitterLogin() {
 }
 
 function twitterLogout() {
-    firebase.auth().signOut().then(function() {
-        // Sign-out successful.
+    firebase.auth().signOut().then(function () {
         //alert("Te has deslogueado con éxito");
         $('#status').text('');
         $('#logOut').remove();
@@ -103,21 +101,21 @@ function twitterLogout() {
         $('<button id="logIn">Twitter Log In</button>').appendTo('#twitterLogin');
         twitterLoginClickEventHandler();
         //Aquí habría que borrar la variable del usuario en el localStorage
-    }).catch(function(error) {
+    }).catch(function (error) {
         // An error happened.
         alert("Error al desloguearse");
     });
 }
 
 function twitterLoginClickEventHandler() {
-    $('#logIn').on('click', function() {
+    $('#logIn').on('click', function () {
         $('#logIn').remove();
         twitterLogin();
     });
 }
 
 function twitterLogoutClickEventHandler() {
-    $('#logOut').on('click', function() {
+    $('#logOut').on('click', function () {
         twitterLogout();
     });
 }

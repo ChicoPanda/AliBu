@@ -1,0 +1,85 @@
+div.footer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: nowrap;
+    background-color: rgb(14, 14, 14);
+}
+
+div.footer #bottom {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: nowrap;
+    min-height: 10vh;
+}
+
+div.footer #bottom #legality {
+    flex-basis: 60%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+div.footer #bottom #legality ul {
+    flex-basis: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 100%;
+}
+
+div.footer #bottom #legality li {
+    margin: 0 2%;
+}
+
+div.footer #bottom #legality li a {
+    color: rgb(230, 230, 230);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    text-decoration: underline;
+    transition: 0.4s color;
+}
+
+div.footer #bottom #author {
+    flex-basis: 40%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+div.footer #bottom #author a {
+    color: rgb(230, 230, 230);
+    font-family: Maxwell-Light, sans-serif;
+    font-size: 18px;
+    text-decoration: none;
+    transition: 0.4s color;
+}
+
+div.footer #bottom #legality li a:hover,
+div.footer #bottom #author a:hover {
+    color: rgb(240, 200, 120);
+}
+
+@media (max-width: 768px) {
+    div.footer #bottom {
+        flex-wrap: wrap;
+    }
+    div.footer #bottom #legality {
+        flex-basis: 100%;
+        margin: 2% 0 1%;
+    }
+    div.footer #bottom #author {
+        flex-basis: 100%;
+        margin: 1% 0 2%;
+    }
+}

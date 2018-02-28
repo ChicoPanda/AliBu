@@ -1,0 +1,41 @@
+main {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 14% 0 1%;
+    /* QUITAR MÁS ADELANTE LA ALTURA */
+    min-height: 63vh;
+}
+
+main aside.left {
+    /* QUITAR MÁS ADELANTE LOS BORDES */
+    border: solid red;
+    flex-basis: 25%;
+    padding: 1%;
+}
+
+main aside.left .category {
+    /* QUITAR MÁS ADELANTE LOS BORDES */
+    border: solid red;
+}
+
+main aside.left .filter {
+    /* QUITAR MÁS ADELANTE LOS BORDES */
+    border: solid red;
+}
+
+main aside.right {
+    /* QUITAR MÁS ADELANTE LOS BORDES */
+    border: solid red;
+    flex-basis: 75%;
+    padding: 1%;
+}
+
+main aside.right .tools {
+    /* QUITAR MÁS ADELANTE LOS BORDES */
+    border: solid red;
+}
+
+main aside.right .products {
+    /* QUITAR MÁS ADELANTE LOS BORDES */
+    border: solid red;
+}

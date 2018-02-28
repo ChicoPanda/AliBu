@@ -26,7 +26,7 @@
  }(document, 'script', 'facebook-jssdk'));
 
  // logeo normal
- function login() {
+ function loginfb() {
      FB.login(function(response) {
          if (response.status === 'connected') {
              document.getElementById('status').innerHTML = 'Estas conectado.';
