@@ -1,3 +1,9 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
 div.footer {
     display: flex;
     justify-content: center;
@@ -59,7 +65,7 @@ div.footer #bottom #author {
 
 div.footer #bottom #author a {
     color: rgb(230, 230, 230);
-    font-family: Maxwell-Light, sans-serif;
+    font-family: Maxwell-Bold, sans-serif;
     font-size: 18px;
     text-decoration: none;
     transition: 0.4s color;

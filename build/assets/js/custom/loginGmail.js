@@ -1,15 +1,16 @@
 'use strict';
 
 $(document).ready(function () {
-    afterLogin();
     $('#user-info').hide();
     $('#user-logout').hide();
 
+    afterLogin();
     $('#logInGmail').on('click', function () {
         loginGmail();
     });
 
     $('#user-logout').on('click', function () {
+
         logoutGmail();
     });
 });
@@ -30,13 +31,15 @@ function afterLogin() {
             // User Data
             var user = result.user;
             var userName = user.displayName;
+            var userEmail = user.email;
             var avatar = user.photoURL;
-            console.log(user, userName, avatar);
 
             $('#user-info .text-menu').text(userName);
             $('#user-info .user-avatar').css("background-image", "url('" + avatar + "')");
 
             // AÑADIR LOCALSTORAGE
+            var userLogged = ["gmail", userName, userEmail, avatar];
+            localStorage.setItem("userLogged", JSON.stringify(userLogged));
         }
     }).catch(function (error) {
         console.log("Ha ocurrido un error: " + error.message + " Código de error: " + error.code + " Cuenta: " + error.email + " Credenciales: " + error.credential);

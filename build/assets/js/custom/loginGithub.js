@@ -1,6 +1,7 @@
+"use strict";
+
 //LA PARTE DONDE PONE ID ES LA ID DE LA APLICACION QUE CONTROLA EL LOGIN Y UNA VEZ HECHO EL LOGIN HACIA DONDE SE REDIRIGE, SE PUEDE CAMBIAR, POR AHORA
 //FUNCIONA GENIAL, ACUERDENSE USARLO DESDE LOCALHOST, PARA TESTEO DESCOMENTEN EL BOTON DEL HTML
-function loginGitHub(){
-      location.replace("https://github.com/login/oauth/authorize?scope=read:user&client_id=49fb29d304add4a887aa"); 
+function loginGH() {
+    location.replace("https://github.com/login/oauth/authorize?scope=read:user&client_id=49fb29d304add4a887aa");
 }
-      
