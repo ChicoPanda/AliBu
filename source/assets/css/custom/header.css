@@ -4,15 +4,14 @@ div.header {
 }
 
 div.logo {
-    /* border: solid red; */
     display: flex;
     justify-content: center;
     align-content: center;
     flex-wrap: wrap;
     padding: 10px 0 0;
-    /* background: -webkit-linear-gradient(top, rgba(125, 126, 125, 1) 0%, rgba(14, 14, 14, 1) 100%);
+    background: -webkit-linear-gradient(top, rgba(125, 126, 125, 1) 0%, rgba(14, 14, 14, 1) 100%);
     background: -moz-linear-gradient(top, rgba(125, 126, 125, 1) 0%, rgba(14, 14, 14, 1) 100%);
-    background: linear-gradient(to bottom, rgba(125, 126, 125, 1) 0%, rgba(14, 14, 14, 1) 100%); */
+    background: linear-gradient(to bottom, rgba(125, 126, 125, 1) 0%, rgba(14, 14, 14, 1) 100%);
     display: none;
 }
 
@@ -22,7 +21,6 @@ div.logo .logo-title {
     font-family: Maxwell-Bold, sans-serif;
     font-size: 3em;
     color: rgb(230, 230, 230);
-    /* color: rgb(75, 75, 75); */
 }
 
 div.logo .logo-img {
@@ -35,7 +33,6 @@ div.logo .logo-img {
     font-size: 1.2em;
     transition: 0.2s color;
     color: rgb(230, 230, 230);
-    /* color: rgb(75, 75, 75); */
 }
 
 .text-menu {
@@ -44,7 +41,6 @@ div.logo .logo-img {
     transition: 0.1s color;
     color: goldenrod;
     color: rgb(230, 230, 230);
-    /* color: rgb(75, 75, 75); */
 }
 
 .user-avatar {
@@ -52,6 +48,11 @@ div.logo .logo-img {
     padding: 8px 14px;
     border-radius: 2px;
     background-size: cover;
+}
+
+#spinner img {
+    display: inline-block;
+    width: 25px;
 }
 
 .text-title:hover,

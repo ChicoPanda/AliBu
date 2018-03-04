@@ -5,10 +5,13 @@ $(document).ready(function() {
         $("#slider-range").slider({
             range: true,
             min: 0,
-            max: 1000,
-            values: [25, 420],
+            max: 2000,
+            values: [0, 2000],
             slide: function(event, ui) {
                 $("#price").val(ui.values[0] + "€ - " + ui.values[1] + "€");
+            },
+            stop: function() {
+                filterItems();
             }
         });
         $("#price").val($("#slider-range").slider("values", 0) +
@@ -20,8 +23,6 @@ $(document).ready(function() {
 
     var userLogged = JSON.parse(localStorage.getItem("userLogged"));
     if (userLogged != null) {
-        // console.log("userLogged");
-
         $('#user-info').show();
         $('#user-logout').show();
         $('#user-login').hide();
@@ -32,9 +33,49 @@ $(document).ready(function() {
     }
 
     ebayApiCall();
-
     wallmartApiCall();
 });
+
+function filterItems() {
+    var range = $('#slider-range').slider('values');
+    var storeSelected = $("#store").val();
+    var items = $(".product-item");
+    items.hide();
+    var products = [];
+    switch (true) {
+        case (storeSelected == "all"):
+            products.push($(".ebay, .walmart"));
+            break;
+        case (storeSelected == "ebay"):
+            products.push($(".ebay"));
+            break;
+        case (storeSelected == "walmart"):
+            products.push($(".walmart"));
+            break;
+    }
+    // console.log(products[0]);
+    products[0].filter(function() {
+        var item = $(this);
+        var price = item.find(".price-item").text();
+        var price = price.replace("€", "");
+        console.log(price);
+        // console.log(price >= range[0] && price <= range[1])
+        return (price >= range[0] && price <= range[1]);
+    }).show();
+}
+
+function convertPrice(price) {
+    var result = 0;
+    var number = /[0-9\.]$/
+    if (!number.exec(price)) {
+        console.log("No se puede convertir");
+    } else {
+        var change = parseFloat(0.7641);
+        var result = change * parseFloat(price);
+    }
+    return result.toFixed(2);
+}
+
 
 function ebayApiCall() {
     var url = "http://svcs.ebay.com/services/search/FindingService/v1";
@@ -45,7 +86,7 @@ function ebayApiCall() {
     url += "&RESPONSE-DATA-FORMAT=JSON";
     url += "&callback=findItemsByKeywordsCallback";
     url += "&REST-PAYLOAD";
-    url += "&categoryId(0)=31387";
+    url += "&categoryId=31388";
     // url += "&categoryId(1)=31388";
     url += "&paginationInput.pageNumber=1";
     url += "&paginationInput.entriesPerPage=10";
@@ -61,20 +102,21 @@ function findItemsByKeywordsCallback(json) {
     var results = json.findItemsByCategoryResponse[0].searchResult[0].item;
     var container = $('.products');
     for (var i = 0; i < results.length; i++) {
+        // console.log(results[i].sellingStatus[0].currentPrice[0].__value__);
         container.append(
-            '<div class="product-item">' +
+            '<div class="product-item ebay">' +
             '<img class="picture-item" src="' + results[i].galleryURL[0].replace('http:', 'https:') + '" />' +
             '<a target="_blank" href="' + results[i].viewItemURL[0].replace('http:', 'https:') + '">' +
-            '<img class="logo logo-ebay" src="./assets/img/ebay-logo.svg"></img></a>' +
+            '<img class="logo logo-ebay" src="./build/assets/img/ebay-logo.svg"></img></a>' +
             '<div class="title-item">' + results[i].title[0].slice(0, 20) + '</div>' +
-            '<div class="price-item">$' + results[i].sellingStatus[0].currentPrice[0].__value__ + '</div>' +
+            '<div class="price-item">' + convertPrice(results[i].sellingStatus[0].currentPrice[0].__value__) + '€</div>' +
             '</div>');
     }
 };
 
 function wallmartApiCall() {
     var API_KEY = "tcstqnfcpms3hphph9qdbmta";
-    buscarProductoWalmart()
+    buscarProductoWalmart();
 
 
     //Mas adelante esta sera la funcion que filtrara las cosas por ahora como pueden leer esta buscando "ipods" que el valor de la variable "query"
@@ -89,7 +131,7 @@ function wallmartApiCall() {
         var sort = document.getElementById("importancia");
         var order = document.getElementById("ordenadoPor"); */
         var Id = ""
-        var query = "ipod";
+        var query = "watches";
         var start = "";
         var number = "";
         var sort = "relevance";
@@ -116,7 +158,7 @@ function wallmartApiCall() {
                 url_walmart += "&numItems=" + number;
             }
 
-            console.log(url_walmart);
+            // console.log(url_walmart);
             return Walmart(url_walmart);
         }
     }
@@ -129,8 +171,8 @@ function wallmartApiCall() {
             jsonp: "callback",
             dataType: "jsonp",
             success: function(response) {
-                console.log("HA IDO TODO BIEN");
-                console.log(response);
+                // console.log("HA IDO TODO BIEN");
+                // console.log(response);
                 //llamamos a esta funcion importante
                 crearObjeto(response)
 
@@ -173,14 +215,14 @@ function wallmartApiCall() {
         }
         var container = $('.products');
         for (var i in listaProductos) {
-            console.log(listaProductos[i]);
+            // console.log(listaProductos[i].precio);
             container.append(
-                '<div class="product-item">' +
+                '<div class="product-item walmart">' +
                 '<img class="picture-item" src="' + listaProductos[i].imagen + '" />' +
                 '<a target="_blank" href="enlace">' +
-                '<img class="logo logo-walmart" src="./assets/img/walmart-logo.svg"></img></a>' +
+                '<img class="logo logo-walmart" src="./build/assets/img/walmart-logo.svg"></img></a>' +
                 '<div class="title-item">' + listaProductos[i].nombre.slice(0, 20) + '</div>' +
-                '<div class="price-item">$' + listaProductos[i].precio + '</div>' +
+                '<div class="price-item">' + convertPrice(listaProductos[i].precio) + '€</div>' +
                 '</div>');
         }
         return listaProductos;

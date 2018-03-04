@@ -4,14 +4,9 @@ main {
     justify-content: space-between;
     margin: 4% 0 5%;
     padding: 1%;
-    /* QUITAR MÁS ADELANTE LA ALTURA */
-    /* min-height: 63vh; */
-    /* border: solid red; */
 }
 
 main aside.left {
-    /* QUITAR MÁS ADELANTE LOS BORDES */
-    /* border: solid red; */
     flex-basis: 20%;
     align-self: flex-start;
     padding: 1%;
@@ -21,8 +16,6 @@ main aside.left {
 }
 
 main aside.left .box {
-    /* QUITAR MÁS ADELANTE LOS BORDES */
-    /* border: solid blue; */
     margin-bottom: 14px;
     padding: 10px;
     border-radius: 4px;
@@ -30,7 +23,6 @@ main aside.left .box {
 }
 
 main aside.left .box label {
-    /* QUITAR MÁS ADELANTE LOS BORDES */
     width: 100%;
     font-family: Maxwell-Bold, sans-serif;
     font-size: 2em;
@@ -39,7 +31,6 @@ main aside.left .box label {
 }
 
 main aside.left .box select {
-    /* QUITAR MÁS ADELANTE LOS BORDES */
     width: 100%;
     min-height: 35px;
     padding: 0 5px;
@@ -50,13 +41,10 @@ main aside.left .box select {
 }
 
 main aside.left .price {
-    /* QUITAR MÁS ADELANTE LOS BORDES */
-    /* border: solid red; */
     margin-bottom: 0px;
 }
 
 main aside.left .price input {
-    /* QUITAR MÁS ADELANTE LOS BORDES */
     width: 100%;
     margin-bottom: 5px;
     border: 0;
@@ -69,21 +57,16 @@ main aside.left .price input {
 }
 
 main aside.left .price #slider-range {
-    /* QUITAR MÁS ADELANTE LOS BORDES */
     width: 90%;
     margin: 0 auto;
 }
 
 main aside.right {
-    /* QUITAR MÁS ADELANTE LOS BORDES */
-    /* border: solid red; */
     flex-basis: 80%;
     padding: 0 2% 0 2%;
 }
 
 main aside.right .tools {
-    /* QUITAR MÁS ADELANTE LOS BORDES */
-    /* border: solid red; */
     margin-bottom: 1%;
 }
 
@@ -93,7 +76,6 @@ main aside.right .tools {
     border: solid 1px #E4E4E4;
     border-radius: 6px;
     background-color: white;
-    /* border: solid red; */
     box-shadow: 1px 1px 2px #333333;
 }
 
@@ -134,13 +116,9 @@ main aside.right .tools {
 }
 
 main aside.right .products {
-    /* QUITAR MÁS ADELANTE LOS BORDES */
-    /* flex-basis: 80%; */
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    /* padding: 1%; */
-    /* border: solid red; */
     width: 100%;
 }
 
@@ -154,6 +132,11 @@ main aside.right .products .product-item {
     border-radius: 6px;
     box-shadow: 1px 1px 2px #333333;
     background-color: white;
+    transition: 0.2s transform;
+}
+
+main aside.right .products .product-item:hover {
+    transform: scale(1.1, 1.1);
 }
 
 main aside.right .products .product-item .picture-item {
@@ -173,8 +156,6 @@ main aside.right .products .product-item .title-item {
 }
 
 main aside.right .products .product-item .price-item {
-    /* QUITAR MÁS ADELANTE LOS BORDES */
-    /* border: solid red; */
     width: 25%;
     padding: 10px 0;
     font-family: Maxwell-Bold, sans-serif;
@@ -185,6 +166,7 @@ main aside.right .products .product-item .price-item {
 
 @media (max-width: 768px) {
     main {
+        flex-wrap: wrap;
         margin: 60px 0;
         padding: 4%;
     }
@@ -208,5 +190,13 @@ main aside.right .products .product-item .price-item {
     }
     main aside.right {
         flex-basis: 100%;
+    }
+    #custom-search-input {
+        width: 100%;
+    }
+    main aside.right .products {
+        flex-basis: 100%;
+        display: flex;
+        flex-flow: column nowrap;
     }
 }

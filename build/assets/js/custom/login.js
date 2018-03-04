@@ -3,9 +3,8 @@
 var provider;
 
 $(document).ready(function () {
-    $('#user-info').hide();
-    $('#user-logout').hide();
 
+    $("#spinner").hide();
     afterLogin();
     $('#logInGmail').on('click', function () {
         loginGmail();
@@ -41,10 +40,6 @@ function loginTwitter() {
 function afterLogin() {
     firebase.auth().getRedirectResult().then(function (result) {
         if (result.credential) {
-            $('#user-info').show();
-            $('#user-logout').show();
-            $('#user-register').hide();
-
             // User Data
             var type = result.additionalUserInfo.providerId;
             var user = result.user;
@@ -57,6 +52,10 @@ function afterLogin() {
             // AÑADIR LOCALSTORAGE
             var userLogged = [userName, avatar, type];
             localStorage.setItem("userLogged", JSON.stringify(userLogged));
+            $("#spinner").show();
+            setTimeout(function () {
+                location.href = "../../../../index.html";
+            }, 2000);
         }
     }).catch(function (error) {
         console.log("Ha ocurrido un error: " + error.message + " Código de error: " + error.code + " Cuenta: " + error.email + " Credenciales: " + error.credential);
@@ -65,27 +64,10 @@ function afterLogin() {
 
 function logOut() {
     var typeNetwork = JSON.parse(localStorage.getItem("userLogged"))[2];
-    console.log(typeNetwork);
-    switch (true) {
-        case typeNetwork == "facebook.com":
-            FB.logout(function (response) {
-                alert("Has cerrado la sesión con éxito.");
-                $('#user-info').hide();
-                $('#user-logout').hide();
-                $('#user-register').show();
-            });
-            break;
-        case typeNetwork == "twitter.com":
-        case typeNetwork == "google.com":
-            firebase.auth().signOut().then(function () {
-                alert("Has cerrado la sesión con éxito.");
-                $('#user-info').hide();
-                $('#user-logout').hide();
-                $('#user-register').show();
-            }).catch(function (error) {
-                alert("No se ha podido cerrar la sesión.");
-            });
-            break;
-    }
     localStorage.removeItem("userLogged");
+
+    $('#user-info').hide();
+    $('#user-logout').hide();
+    $('#user-login').show();
+    $('#user-register').show();
 }

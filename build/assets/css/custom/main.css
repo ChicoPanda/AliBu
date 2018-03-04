@@ -15,20 +15,11 @@
     src: url("../../fonts/maxwell/Maxwell-LIGHT.ttf");
 }
 
-
-/* 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-} */
-
 html {
     font-size: 16px;
 }
 
 body {
-    /* width: 100vw; */
     overflow-x: hidden;
     color: #333;
     background-color: rgb(200, 200, 200);
