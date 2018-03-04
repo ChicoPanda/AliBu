@@ -1,0 +1,141 @@
+main {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin: 4% 0 5%;
+    padding: 1%;
+}
+
+div.login {
+    flex-basis: 40%;
+    padding: 0 2% 2%;
+    border-radius: 20px;
+    box-shadow: 3px 3px 6px #333333;
+    background-color: goldenrod;
+}
+
+div.login .title {
+    width: 100%;
+    font-family: Maxwell-Bold, sans-serif;
+    font-size: 2em;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px #333333;
+    color: rgb(230, 230, 230);
+}
+
+div.login form {
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    background-color: aliceblue;
+}
+
+div.login form label {
+    width: 100%;
+    margin: 10px 0 0 20px;
+    font-family: Maxwell-Bold, sans-serif;
+    font-size: 1.4em;
+    text-align: left;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px #333333
+}
+
+div.login form input {
+    /* border: solid red; */
+    width: 95%;
+    height: 30px;
+    padding: 5px 8px;
+    border: solid darkgray 1px;
+    border-radius: 4px;
+}
+
+div.login form div.buttons {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+    padding: 2% 0 0;
+}
+
+div.login form div.buttons input {
+    width: auto;
+    height: auto;
+    padding: 5px 8px;
+    font-size: 1.4em;
+    font-family: Maxwell-Bold, sans-serif;
+    text-transform: uppercase;
+    border-radius: 4px;
+    background-color: antiquewhite;
+    transition: 0.2s transform;
+}
+
+div.login form div.buttons input:hover {
+    transform: scale(1.1, 1.1);
+}
+
+hr {
+    margin: 4% 1%;
+}
+
+div.login .rrss {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 2% 2% 4%;
+    border-radius: 4px;
+    background-color: aliceblue;
+}
+
+div.login .rrss span {
+    width: 100%;
+    margin-bottom: 15px;
+    text-align: center;
+    font-family: Maxwell-Bold, sans-serif;
+    font-size: 1.4em;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px #333333
+}
+
+div.login .rrss button.twitter {
+    background-image: url("./../../img/icons/twitter.svg")
+}
+
+div.login .rrss button.facebook {
+    background-image: url("./../../img/icons/facebook.svg")
+}
+
+div.login .rrss button.gmail {
+    background-image: url("./../../img/icons/gmail.svg")
+}
+
+div.login .rrss button.github {
+    background-image: url("./../../img/icons/github.svg")
+}
+
+div.login .rrss button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0);
+    filter: drop-shadow(1px 1px 2px #333333);
+    transition: 0.2s transform;
+}
+
+div.login .rrss button:hover {
+    transform: scale(1.2)
+}
+
+@media (max-width: 768px) {
+    main {
+        margin: 60px 0;
+        padding: 4%;
+    }
+    div.login {
+        flex-basis: 100%;
+        padding: 0 4% 4%;
+        border-radius: 10px;
+        box-shadow: 3px 3px 6px #333333;
+        background-color: goldenrod;
+    }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "alibu",
+  "version": "1.0.0",
+  "description": "Aplicación de Ebay y Walmart con login en redes sociales",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChicoPanda/AliBu.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChicoPanda/AliBu/issues"
+  },
+  "homepage": "https://github.com/ChicoPanda/AliBu#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-image": "^4.3.0"
+  }
+}

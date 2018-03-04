@@ -5,13 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
     <!-- Código de JQUERY -->
-    <script src="./build/assets/js/lib/jquery-3.3.1.min.js"></script>
+    <script src="../js/lib/jquery-3.3.1.min.js"></script>
 
     <!-- Código de JQUERY UI -->
-    <script src="./build/assets/js/lib/jquery-ui.min.js"></script>
+    <!-- <script src="../js/lib/jquery-ui.min.js"></script> -->
 
     <!-- Enlaces de BOOTSTRAP -->
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -21,31 +19,30 @@
 
 
     <!-- Enlaces de Firebase -->
-    <script src="//www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
-    <script src="//www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
-    <script src="//www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
 
     <!-- Código de javascript propio -->
-    <script src="./build/assets/js/custom/login.js"></script>
-    <script src="./build/assets/js/custom/loginFacebook.js"></script>
-    <script src="./build/assets/js/custom/main.js"></script>
+    <script src="../js/custom/login.js"></script>
+    <script src="../js/custom/loginFacebook.js"></script>
 
     <!-- Estilos de css propios -->
-    <link rel="stylesheet" href="./build/assets/css/custom/main.css">
-    <link rel="stylesheet" href="./build/assets/css/custom/header.css">
-    <link rel="stylesheet" href="./build/assets/css/custom/content.css">
-    <link rel="stylesheet" href="./build/assets/css/custom/footer.css">
+    <link rel="stylesheet" href="../css/custom/main.css">
+    <link rel="stylesheet" href="../css/custom/header.css">
+    <link rel="stylesheet" href="../css/custom/login.css">
+    <link rel="stylesheet" href="../css/custom/footer.css">
 
-    <link rel="shortcut icon" type="image/x-icon" href="./build/assets/img/favicon.ico">
-    <title>AliBu | Inicio</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./../img/favicon.ico">
+    <title>AliBu | Login</title>
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="logo">
                 <h1 class="logo-title">AliBu</h1>
-                <img class="logo-img" src="./build/assets/img/logo.svg" alt="" class="logo" width="5%">
+                <img class="logo-img" src="../img/logo.svg" alt="" class="logo" width="5%">
             </div>
             <div class="container-fluid header">
                 <!-- En la versión móvil se mostrará el nombre/icono del sitio y el botón de menú -->
@@ -55,7 +52,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                    <a class="navbar-brand" href="./index.html" title="Inicio">
+                    <a class="navbar-brand" href="../../../index.html" title="Inicio">
                         <span class="text-title">AliBu</span>
                         <span class="glyphicon glyphicon-home"></span>
                     </a>
@@ -63,13 +60,7 @@
                 <!-- Este es el contenido del menú que se despliega con el botón de menú-->
                 <div id="menu-desplegable" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li id="user-login">
-                            <a href="./build/assets/portfolio/login.html" title="Iniciar sesión">
-                                <span class="glyphicon glyphicon-log-in"></span>
-                                <span class="text-menu">&nbsp;Iniciar sesión</span>
-                            </a>
-                        </li>
-                        <li id="user-info">
+                        <!-- <li id="user-info">
                             <a href="#" title="Perfil de usuario">
                                 <span class="glyphicon glyphicon-user"></span>
                                 <span class="text-menu">&nbsp;Usuario</span>
@@ -81,8 +72,14 @@
                                 <span class="glyphicon glyphicon-log-out"></span>
                                 <span class="text-menu">&nbsp;Cerrar sesión</span>
                             </a>
+                        </li> -->
+                        <li id="spinner">
+                            <a href="#" title="Cerrar sesión">
+                                <span class="text-menu">&nbsp;Cargando...</span>
+                                <img src="./../img/spinner.svg" alt="">
+                            </a>
                         </li>
-                        <li id="user-register" i>
+                        <li id="user-register">
                             <a href="#" title="Registrarse">
                                 <span class="glyphicon glyphicon-plus"></span>
                                 <span class="text-menu">&nbsp;Registrarse</span>
@@ -94,45 +91,31 @@
         </nav>
     </header>
     <main>
-        <aside class="left">
-            <div class="category box">
-                <label for="category">Categoría</label>
-                <select id="category">
-                    <option value="all">Todas</option>
-                    <option value="watch">Relojes</option>
-                    <option value="tablet">Tabletas</option>
-                    <option value="camera">Cámaras</option>
-                </select>
-            </div>
-            <div class="store box">
-                <label for="store">Tienda</label>
-                <select id="store" onchange="filterItems()">
-                    <option value="all">Todas</option>
-                    <option value="ebay">eBay</option>
-                    <option value="walmart">Walmart</option>
-                </select>
-            </div>
-            <div class="price box">
-                <label for="price">Precio</label>
-                <input type="text" id="price" readonly>
-                <div id="slider-range"></div>
-            </div>
-        </aside>
-        <aside class="right">
-            <div class="tools">
-                <div id="custom-search-input">
-                    <div class="input-group col-md-12">
-                        <input id="search" type="text" class="form-control input-lg" placeholder="Buscar" />
-                        <span class="input-group-btn">
-                                <button class="btn btn-info btn-lg" type="button">
-                                    <i class="glyphicon glyphicon-search"></i>
-                                </button>
-                            </span>
+        <div class="login">
+            <div class="login-form">
+                <h1 class="title">Login de usuario</h1>
+                <form>
+                    <label for="username">Correo electrónico: </label>
+                    <input type="text" id="username" />
+                    <label for="password">Contraseña: </label>
+                    <input type="password" id="password" />
+
+                    <span id="errores"></span>
+                    <div class="buttons">
+                        <input type="button" value="Validar" id="b_submit" class="boton efecto" />
+                        <input type="button" value="Invitado" id="b_invited" class="boton efecto" />
                     </div>
+                </form>
+                <hr/>
+                <div class="rrss">
+                    <span>O bien, inicie sesión con:</span>
+                    <button id="logInTwitter" class="icons twitter"></button>
+                    <button id="logInFacebook" class="icons facebook" onclick="loginFB()"></button>
+                    <button id="logInGmail" class="icons gmail"></button>
+                    <button id="logInGitHub" class="icons github" onclick="loginGH()"></button>
                 </div>
             </div>
-            <div class="products"></div>
-        </aside>
+        </div>
     </main>
     <footer>
         <div class="container-fluid footer">
@@ -163,6 +146,6 @@
         </div>
     </footer>
 </body>
-<script src="./build/assets/js/lib/firebase-init.js"></script>
+<script src="../js/lib/firebase-init.js"></script>
 
 </html>

@@ -1,0 +1,37 @@
+/* Estilo css principal de la aplicación */
+
+@font-face {
+    font-family: Maxwell-Regular;
+    src: url("../../fonts/maxwell/Maxwell-REGULAR.ttf");
+}
+
+@font-face {
+    font-family: Maxwell-Bold;
+    src: url("../../fonts/maxwell/Maxwell-BOLD.ttf");
+}
+
+@font-face {
+    font-family: Maxwell-Light;
+    src: url("../../fonts/maxwell/Maxwell-LIGHT.ttf");
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    overflow-x: hidden;
+    color: #333;
+    background-color: rgb(200, 200, 200);
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+ol,
+li,
+li a {
+    list-style: none;
+}
