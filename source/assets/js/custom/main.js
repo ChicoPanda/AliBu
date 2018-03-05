@@ -78,7 +78,7 @@ function convertPrice(price) {
 
 
 function ebayApiCall() {
-    var url = "http://svcs.ebay.com/services/search/FindingService/v1";
+    var url = "https://svcs.ebay.com/services/search/FindingService/v1";
     url += "?OPERATION-NAME=findItemsByCategory";
     url += "&SERVICE-VERSION=1.0.0";
     url += "&SECURITY-APPNAME=TipodeIn-AliBu-PRD-ddf6f4b63-4347d6bf";
@@ -121,7 +121,7 @@ function wallmartApiCall() {
 
     //Mas adelante esta sera la funcion que filtrara las cosas por ahora como pueden leer esta buscando "ipods" que el valor de la variable "query"
     function buscarProductoWalmart() {
-        var url_walmart = "http://api.walmartlabs.com/v1/search";
+        var url_walmart = "https://api.walmartlabs.com/v1/search";
         url_walmart += "?apiKey=" + API_KEY;
         //Aqui guardamos el valor de los inputs de los filtros por ejemplo asi:
         /*var Id = ""
