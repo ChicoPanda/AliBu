@@ -59,7 +59,7 @@
 
          $("#spinner").show();
          setTimeout(function() {
-             location.href = "../../../../index.html";
+             location.href = "../../../index.html";
          }, 2000);
      });
  }
